@@ -20,14 +20,15 @@ class CoolLexer (object):
                     'esac':"ESAC",
                     'not':"NOT",
                     'new':"NEW",
-                    'of':"OF"}
+                    'of':"OF",
+                    'in' : "IN"}
     bool_consts  = ['true','false']
     #reserved_TY  = ['Int','Bool']
     states       = (("STR","exclusive"),
                     ("COMMENT","exclusive"),
                     ('STRERROR',"exclusive"))
     tokens       = ('TYPEID','OBJECTID','INT_CONST','BOOL_CONST','STR_CONST','ERROR','DARROW','LE','ASSIGN')\
-                    +tuple(reserved_ID.values())
+                    +tuple(reserved.values())
     literals     = ";<(),.@=~*+-/{}:"
 
     t_INT_CONST  = "[0-9]+"
@@ -38,7 +39,7 @@ class CoolLexer (object):
         return t
     @TOKEN(r'<-')
     def t_INITIAL_ASSIGN(self,t):
-        t.type   = "ASSIGNS"
+        t.type   = "ASSIGN"
         return t
     @TOKEN(r"=>")
     def t_INITIAL_DARROW(self,t):
@@ -96,7 +97,6 @@ class CoolLexer (object):
     @TOKEN(r'[(][*]')
     def t_INITIAL_begin_comment(self,t):
         t.lexer.begin('COMMENT')
-
 
     @TOKEN(r"\\\"")
     def t_STR_escquote(self,t):
@@ -261,7 +261,7 @@ class CoolLexer (object):
 if __name__ == "__main__":
     t = CoolLexer()
     t.build()
-    test = open("atoi_test.cl",'r').readlines()
+    test = open("hello_world.cl",'r').readlines()
     s = ""
     for line in test:
         s=s+line
