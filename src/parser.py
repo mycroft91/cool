@@ -1,4 +1,4 @@
-from tree import *
+from tree.tree import *
 from lexer import *
 import ply.yacc as yacc
 from ply.lex import LexToken
@@ -439,7 +439,7 @@ class CoolParser(object):
         self.filename   = None
 
 def main():
-    filename    = "/home/mycroft/work/cool/hello_world.cl"
+    filename    = "/Users/mycroft92/personal/cool/hello_world.cl"
     parser      = CoolParser()
     print parser.Parse(filename)
     print parser.error_msgs
