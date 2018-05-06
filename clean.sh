@@ -1,1 +1,1 @@
-rm -rf src/parsetab.py src/*.pyc src/*.out src/tree/*.pyc
+rm -rf src/parser/parsetab.py src/*.pyc src/parser/*.out src/tree/*.pyc src/parser/*.pyc

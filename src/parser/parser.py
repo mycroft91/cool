@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(0, os.path.dirname( os.path.dirname(os.path.abspath(__file__))))
+
 from tree.tree import *
 from lexer import *
 import ply.yacc as yacc
@@ -438,9 +442,11 @@ class CoolParser(object):
         self.errors     = 0
         self.filename   = None
 
-def main():
-    filename    = "/Users/mycroft92/personal/cool/hello_world.cl"
+def test():
+    filename    = "/Users/mycroft92/personal/cool/tests/hello_world.cl"
     parser      = CoolParser()
     print parser.Parse(filename)
     print parser.error_msgs
-main()
+
+if __name__ == '__main__':
+    test()
